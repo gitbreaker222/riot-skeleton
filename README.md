@@ -1,4 +1,4 @@
-# Webpack
+# Webpack example
 
 This is a simple example of using webpack with riot. It uses webpack loader [riot-tag-loader](https://www.npmjs.com/package/riot-tag-loader).
 
@@ -63,3 +63,11 @@ becomes (using ES6):
 ```js
 this.getMessage = () => { ... }
 ```
+# Additional features in this example
+
+- [x] eslint (by seperating js from tag)
+- [x] watching js files for hot reload (by `import` js in tag script instead `src`)
+- [ ] event system
+- [ ] version extract from package.json into html
+- [ ] prod build
+- [ ] html code style lint

@@ -1,13 +1,19 @@
 module.exports = {
   "root": true,
   "plugins": [
-    "fp"
+    "riot"
   ],
+  // "settings": {
+  //   "html/indent": "+2"
+  // },
   "env": {
     "browser": true,
     "es6": true,
     "mocha": true,
     "node": true
+  },
+  "globals": {
+    "riot": false
   },
   "extends": "eslint:recommended",
   "parserOptions": {
@@ -18,7 +24,7 @@ module.exports = {
       "error",
       2
     ],
-    "comma-dangle": ["error", "never"],
+    "comma-dangle": ["error", "always"],
     "space-before-function-paren": [
       "error",
       "never"
@@ -76,20 +82,6 @@ module.exports = {
       "never"
     ],
     "sort-imports": "warn",
-    "no-var": "error",
-
-    // FP options
-    "fp/no-arguments": "error",
-    "fp/no-class": "error",
-    "fp/no-delete": "error",
-    "fp/no-events": "error",
-    "fp/no-get-set": "error",
-    "fp/no-let": "error",
-    "fp/no-loops": "error",
-    "fp/no-mutating-methods": "error",
-    "fp/no-proxy": "error",
-    "fp/no-rest-parameters": "error",
-    "fp/no-valueof-field": "error"
+    "no-var": "error"
   }
 }
-

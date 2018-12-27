@@ -1,0 +1,18 @@
+<app>
+  <random></random>
+  <timer>?</timer>
+
+  <div class="version">
+    version: { opts.version }
+  </div>
+
+  <div class="test"
+       onclick={handleToggle}>
+    +{ test }
+  </div>
+
+  <script>
+    import ctrl from "./app.tag.js"
+    ctrl(this)
+  </script>
+</app>
