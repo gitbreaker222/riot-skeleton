@@ -1,14 +1,15 @@
-this.number = null
-this.logs = []
+export default (tag) => {
+  tag.number = null
+  tag.logs = []
 
-this.generate = (e) => {
-  this.logs.push({ text: `Generate button clicked. Event type is ${e.type}`, })
-  this.number = Math.floor(Math.random()*10000)
-  console.log('###', this.number)
+  tag.generate = (e) => {
+    tag.logs.push({ text: `Generate button clicked. Event type is '${e.type}'`, })
+    tag.number = Math.floor(Math.random()*10000)
+  }
+
+  tag.clearLogs = () => {
+    tag.logs = []
+  }
+
+  tag.generate({ type: 'custom', })
 }
-
-this.clearLogs = () => {
-  this.logs = []
-}
-
-this.generate({ type: 'custom', })

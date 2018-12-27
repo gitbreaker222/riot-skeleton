@@ -6,13 +6,19 @@
     version: { opts.version }
   </div>
 
-  <div class="test"
-       onclick={handleToggle}>
-    +{ test }
+  <div class="test">
+    #{ test }
   </div>
 
+  <button type="button"
+          name="button"
+          onclick={handleToggle}>
+    SHUT DOWN APP</button>
+
   <script>
-    import ctrl from "./app.tag.js"
+    import './components/random.tag.html'
+
+    import ctrl from "./app.js"
     ctrl(this)
   </script>
 </app>

@@ -1,4 +1,4 @@
-import './components/random.tag.html'
+import {app,} from './main.js'
 
 export default (tag) => {
   console.info('hello from app ctrl', tag.opts)
@@ -16,11 +16,14 @@ export default (tag) => {
   tag.handleToggle = (event) => {
     event.stopPropagation
     tag.showIt != tag.showIt
-    tag.unmount()
+    app.trigger(app.events.TOGGLE)
   }
 
   //observers
   tag.on('unmount', () => {
     window.clearInterval(counterIntervalId)
+  })
+  app.on(app.events.TOGGLE, () => {
+    tag.unmount()
   })
 }
