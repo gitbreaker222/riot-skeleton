@@ -24,7 +24,7 @@ module.exports = {
       "error",
       2
     ],
-    "comma-dangle": ["error", "always"],
+    "comma-dangle": ["error", "always-multiline"],
     "space-before-function-paren": [
       "error",
       "never"
