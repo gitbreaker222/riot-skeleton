@@ -1,0 +1,20 @@
+<ui-template>
+  <!-- <a-component></a-component> -->
+  <form class="a-class">
+    <div class="">
+      a piece of content: { aVariable }
+    </div>
+    <button type="button"
+            name="alertButton"
+            onClick={handleAnInput}>
+      an alert button
+    </button>
+  </form>
+
+  <script>
+    //import '../a_component/a-component.tag.html'
+
+    import ctrl from "./ui-template.js"
+    ctrl(this)
+  </script>
+</ui-template>

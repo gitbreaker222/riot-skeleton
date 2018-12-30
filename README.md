@@ -67,7 +67,6 @@ this.getMessage = () => { ... }
 
 - [x] eslint (by seperating js from tag)
 - [x] watching js files for hot reload (by `import` js in tag script instead `src`)
-- [ ] event system
-- [ ] version extract from package.json into html
+- [x] event system
+- [x] version extract from package.json into html
 - [ ] prod build
-- [ ] html code style lint

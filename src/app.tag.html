@@ -1,23 +1,29 @@
 <app>
-  <random></random>
-  <timer>?</timer>
-
-  <div class="version">
-    version: { opts.version }
+  <div hidden
+       class="info"
+       data-version={version}>
   </div>
 
+  <ui-template></ui-template>
+
   <div class="test">
-    #{ test }
+    #{ counter }
   </div>
 
   <button type="button"
           name="button"
-          onclick={handleToggle}>
-    SHUT DOWN APP</button>
+          onclick={handleClick}>
+    show counter in alert
+  </button>
+
+  <div class="version">
+    version: { version }
+  </div>
 
   <script>
-    import './components/random.tag.html'
-
+    //import used tags here
+    import './components/_template/ui-template.tag.html'
+    //load controller
     import ctrl from "./app.js"
     ctrl(this)
   </script>

@@ -1,5 +1,4 @@
 const path = require('path')
-//const webpack = require('webpack')
 
 module.exports = {
   entry: './src/main.js',
@@ -30,7 +29,7 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env',],
+            presets: ['@babel/preset-env'],
           },
         },
       },

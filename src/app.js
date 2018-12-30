@@ -1,29 +1,29 @@
-import {app,} from './main.js'
-
+// app tag controller
 export default (tag) => {
   console.info('hello from app ctrl', tag.opts)
 
-  // private
+  // private vars / funcs
   const counterIntervalId = setInterval(() => {
-    tag.test += 1
+    tag.counter += 1
     tag.update()
   }, 1000)
 
-  //public fields
-  tag.test = 222
-  tag.showIt = true
-  //public functions
-  tag.handleToggle = (event) => {
-    event.stopPropagation
-    tag.showIt != tag.showIt
-    app.trigger(app.events.TOGGLE)
-  }
-
-  //observers
+  // lifecycle and event-observers
   tag.on('unmount', () => {
     window.clearInterval(counterIntervalId)
   })
-  app.on(app.events.TOGGLE, () => {
-    tag.unmount()
-  })
+
+  //public props / methods
+  tag.counter = 222
+  tag.version = app.store.version
+
+  tag.handleClick = (event) => {
+    event.stopPropagation
+    tag.showIt != tag.showIt
+
+    const message = `v. ${app.store.version}`
+    app.actions.alert(message)
+  }
+
+
 }
