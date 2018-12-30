@@ -1,16 +1,16 @@
 import riot from 'riot'
-import {version} from '../../package.json'
-
-export const events = {
-  ALERT: 'ALERT',
-  SET_VERSION: 'SET_VERSION',
-  CHANGE_TITLE: 'CHANGE_TITLE',
-}
+import {version} from '../package.json'
 
 const App = (function() {
   const privateProps = new WeakMap()
   let trigger
   let store
+  const events = {
+    ALERT: 'ALERT',
+    CHANGE_VERSION: 'CHANGE_VERSION',
+    CHANGE_TITLE: 'CHANGE_TITLE',
+  }
+
 
   class Store {
     constructor() {
@@ -19,12 +19,13 @@ const App = (function() {
       this._title = '#'
     }
 
+
     get version() {
       return this._version
     }
     set version(version) {
       this._version = version
-      trigger(events.SET_VERSION, version)
+      trigger(events.CHANGE_VERSION, version)
     }
     bumpVersion() {
       const versionParts = this.version.split('.')
@@ -32,6 +33,7 @@ const App = (function() {
       versionParts[2] = bumped
       this.version = versionParts.join('.')
     }
+
 
     get title() {
       return this._title
@@ -42,13 +44,14 @@ const App = (function() {
     }
   }
 
+
   class Actions {
     alert(message) {
       alert(message)
-      store.bumpVersion()
-      trigger(events.ALERT)
+      trigger(events.ALERT, message)
     }
   }
+
 
   class App {
     constructor() {
@@ -60,10 +63,11 @@ const App = (function() {
         store,
         actions,
       })
-      //dev logger
-      // this.on('*', (event, args) => {
-      //   console.log(`[store] ${event}, ${args}`)
-      // })
+      this.events = events
+      //DEV logger
+      this.on('*', (event, args) => {
+        console.log(`[store] ${event}, ${args}`)
+      })
     }
     get store() {
       return privateProps.get(this).store
@@ -78,5 +82,6 @@ const App = (function() {
 
 const app = new App()
 export default app
-//riot.mixin({ app }) //is this better?
-window.app = new App()
+
+//DEV direct access via console
+window.app = app

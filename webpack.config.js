@@ -7,6 +7,11 @@ module.exports = {
     publicPath: '/public/',
     filename: 'bundle.js',
   },
+  resolve: {
+    alias: {
+      app$: path.resolve(__dirname, 'src/app-store-actions.js'),
+    },
+  },
   watch: true,
   devtool: 'inline',
   module: {

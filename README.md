@@ -1,6 +1,29 @@
-# Webpack example
+# Riot.js skeleton
 
-This is a simple example of using webpack with riot. It uses webpack loader [riot-tag-loader](https://www.npmjs.com/package/riot-tag-loader).
+Extended from riot.js [webpack example](https://github.com/riot/examples/tree/gh-pages/webpack) and [riot-webpack-starter](https://github.com/ashwamegh/riot-webpack-starter)
+
+It already contained:
+
+- webpack with dev-server and es6 support (babel)
+- hot-module-replacement (HMR)
+
+## Additional features in this repo
+
+- [x] eslint (by seperating js from tag)
+- [x] Store / Actions in central `app` instance
+  - import shortcut: `import app from 'app'`
+  - get data: `app.store.version` (via es6 getter)
+  - set data: `app.store.version = 2` (via setter; emits event)
+  - listen to changes: `app.on(app.events.CHANGE_VERSION, fn…)`
+  - general actions: `app.actions.alert(message)`
+  - access `app` in *dev-env* directly in browser-console for quick live lookups
+- [x] data-pieces from `package.json` to client (version, etc.)
+- [ ] SCSS
+- [ ] environment settings (dev / prod / …)
+- [ ] prod build
+- [ ] (error-) notification component
+- [ ] modal/dialog component
+- [ ] unit-tests
 
 ## Run locally
 
@@ -20,53 +43,33 @@ $ npm start
 - Open [http://localhost:3000/](http://localhost:3000/)
 - Open [http://localhost:3000/webpack-dev-server/](http://localhost:3000/webpack-dev-server/) for dev server with hot reloading.
 
-## ES6 using Babel
+## Technical details
 
-You can add ES6 support as shown in riot-tag-loader's example. All you have to do is edit `webpack.config.js` and change webpack's modules to
+## eslint
 
-```js
-module: {
-  rules: [
-    {
-      test: /\.tag$/,
-      exclude: /node_modules/,
-      use: [{
-        loader: 'riot-tag-loader',
-        options: {
-          hot: true,
-          type: 'es6'
-        }
-      }]
-    },
-    {
-      test: /\.js$/,
-      exclude: /node_modules/,
-      use: {
-        loader: 'babel-loader',
-        options: {
-          presets: ['@babel/preset-env']
-        }
-      }
-    }
-  ]
-}
+ I could not get the *eslint-html-plugin* to work on the script tags inside the riot-tag-html files (maybe only a problem with atom?). That is why **html** and **js** are separated here.
+
+### Combining Tag HTML and JS
+
+Watching js files for recompiling the tags, works by `import` js in tag script.
+
+```HTML
+<my-tag>
+  <script>
+    //import used tags here
+    // […]
+    //load controller
+    import ctrl from "./my-tag.js"
+    ctrl(this)
+  </script>
+</my-tag>
 ```
 
-As explained in [riot-examples/es6](https://github.com/riot/examples/blob/gh-pages/es6), you will lose riot's shorthand syntax. So this:
+Using the `src` attribute instead won't work, because the file watcher looses connection to the js files and does not recompile on saved changes.
 
-```js
-getMessage() { ... }
+```HTML
+<my-tag>
+  <!-- this does not fully work -->
+  <script src="./my-tag.js"></script>
+</my-tag>
 ```
-
-becomes (using ES6):
-
-```js
-this.getMessage = () => { ... }
-```
-# Additional features in this example
-
-- [x] eslint (by seperating js from tag)
-- [x] watching js files for hot reload (by `import` js in tag script instead `src`)
-- [x] event system
-- [x] version extract from package.json into html
-- [ ] prod build

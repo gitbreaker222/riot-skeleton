@@ -1,3 +1,5 @@
+import app from 'app'
+
 // app tag controller
 export default (tag) => {
   console.info('hello from app ctrl', tag.opts)
@@ -6,7 +8,7 @@ export default (tag) => {
   const counterIntervalId = setInterval(() => {
     tag.counter += 1
     tag.update()
-  }, 1000)
+  }, 2000)
 
   // lifecycle and event-observers
   tag.on('unmount', () => {
@@ -17,13 +19,15 @@ export default (tag) => {
   tag.counter = 222
   tag.version = app.store.version
 
-  tag.handleClick = (event) => {
+  tag.handleVersionClick = (event) => {
     event.stopPropagation
-    tag.showIt != tag.showIt
-
+    app.store.bumpVersion()
     const message = `v. ${app.store.version}`
     app.actions.alert(message)
   }
 
-
+  app.on(app.events.CHANGE_VERSION, (newVersion) => {
+    tag.version = newVersion
+    tag.update() //manual update if triggert programatically
+  })
 }

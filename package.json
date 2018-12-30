@@ -1,10 +1,10 @@
 {
-  "name": "riot-webpack",
+  "name": "riot-skeleton",
   "version": "0.0.1",
-  "description": "Example of webpack and riot",
+  "description": "Web-App skeleton with Riot.js aimed to be fit for production",
   "repository": "riot/examples",
   "main": "src/main.js",
-  "author": "Zhomart Mukhamejanov",
+  "author": "Ruben La Biunda",
   "license": "MIT",
   "engines": {
     "node": ">=4.0.0"
