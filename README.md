@@ -1,3 +1,5 @@
+[![riot.js logo](https://riot.js.org/img/logo/riot240x.png)](https://riot.js.org/)
+
 # Riot.js skeleton
 
 Extended from riot.js [webpack example](https://github.com/riot/examples/tree/gh-pages/webpack) and [riot-webpack-starter](https://github.com/ashwamegh/riot-webpack-starter)
