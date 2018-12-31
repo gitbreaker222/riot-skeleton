@@ -16,6 +16,7 @@ module.exports = {
     "riot": false
   },
   "extends": "eslint:recommended",
+  "parser": "babel-eslint",
   "parserOptions": {
     "sourceType": "module"
   },
