@@ -1,5 +1,5 @@
-import {app} from '../../app.js'
+import app from 'app'
 
 export default (tag) => {
-  window.console.info(tag.opts, app.version)
+  window.console.info(tag.opts, app.store.version)
 }
