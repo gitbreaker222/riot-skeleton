@@ -1,3 +1,5 @@
+*DISCONTINUED*
+
 [![riot.js logo](https://riot.js.org/img/logo/riot240x.png)](https://riot.js.org/)
 
 # Riot.js skeleton
